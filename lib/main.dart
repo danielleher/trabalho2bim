@@ -56,10 +56,6 @@ class Clan {
 
  
 
-/// Função assíncrona para buscar a lista de clãs da API. 
-
-/// Espera que a resposta seja um MAPA com a chave "clans". 
-
 Future<List<Clan>> fetchClans() async { 
 
   final response = await http.get( 
@@ -72,27 +68,15 @@ Future<List<Clan>> fetchClans() async {
 
   if (response.statusCode == 200) { 
 
-    // Primeiro, decodifica o corpo da resposta como um Map<String, dynamic> 
-
+ 
     final Map<String, dynamic> responseBody = 
 
         jsonDecode(response.body) as Map<String, dynamic>; 
 
  
-
-    // Agora, acessa a lista de clãs usando a chave "clans" 
-
-    // Esta linha causou o erro `int is not subtype of Map` antes, 
-
-    // se o item dentro de 'clans' não fosse um Map, mas sim um int. 
-
- 
-
     final List<dynamic> jsonList = responseBody['clans'] as List<dynamic>; 
 
  
-
-    // Converte cada objeto JSON (que representa um clã) em uma instância de Clan. 
 
     return jsonList 
 
@@ -256,7 +240,7 @@ class _MyAppState extends State<MyApp> {
 
                             ), 
 
-                            // Exibe a lista de personagens, que agora são Strings diretas 
+                            
 
                             ...clan.characters.map( 
 
@@ -272,7 +256,7 @@ class _MyAppState extends State<MyApp> {
 
                                 child: Text( 
 
-                                  '- $charName', // <<< ACESSANDO A STRING DIRETAMENTE 
+                                  '- $charName', 
 
                                   style: TextStyle( 
 
