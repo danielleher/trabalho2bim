@@ -8,15 +8,7 @@ import 'package:http/http.dart' as http;
 
  
 
-// A classe Character NÃO É MAIS NECESSÁRIA se a lista de personagens for de strings ou ints simples. 
 
-// class Character { ... } 
-
- 
-
-/// Classe que representa um Clã de Naruto. 
-
-/// Agora contém ID, nome e uma lista de Strings para os personagens. 
 
 class Clan { 
 
