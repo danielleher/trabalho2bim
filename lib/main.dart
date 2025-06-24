@@ -8,15 +8,13 @@ import 'package:http/http.dart' as http;
 
  
 
-
-
 class Clan { 
 
   final String id; 
 
   final String name; 
 
-  final List<String> characters; // <<< VOLTOU A SER UMA LISTA DE STRINGS 
+  final List<String> characters; 
 
  
 
@@ -24,32 +22,16 @@ class Clan {
 
  
 
-  /// Construtor de fábrica para criar uma instância de Clan a partir de um JSON. 
-
   factory Clan.fromJson(Map<String, dynamic> json) { 
 
-    // Garante que 'id' é uma String. 
+   
 
     final id = json['id'].toString(); 
 
- 
-
-    // Tenta obter o nome, com fallback para "Nome Desconhecido". 
-
+     
     final name = (json['name'] as String?) ?? 'Nome Desconhecido'; 
 
  
-
-    // Processa a lista de 'characters'. 
-
-    // 1. Tenta obter 'characters' como uma List<dynamic>. Se for nulo, usa uma lista vazia. 
-
-    // 2. Mapeia CADA ITEM DA LISTA PARA UMA STRING USANDO .toString(). 
-
-    //    Isso vai converter ints (123 -> "123") ou strings ("Naruto" -> "Naruto"). 
-
-    // 3. Converte o resultado para uma List<String>. 
-
     final characters = 
 
         (json['characters'] as List<dynamic>?) 
@@ -58,7 +40,7 @@ class Clan {
 
               (e) => e.toString(), 
 
-            ) // <<< MUDANÇA AQUI: CONVERTE PARA STRING DIRETAMENTE 
+            ) 
 
             .toList() ?? 
 
